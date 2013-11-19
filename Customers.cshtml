@@ -3,7 +3,8 @@ if (!WebSecurity.IsAuthenticated)
 {
 Response.Redirect("Login");
 }
-@{Layout = "Layout.cshtml";
+
+ Layout = "Layout.cshtml";
   var db = Database.Open("Northwind");
   var query = db.Query("SELECT CompanyName, City, Country FROM Customers");  
 }
