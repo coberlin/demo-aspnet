@@ -1,0 +1,25 @@
+﻿@{
+if (!WebSecurity.IsAuthenticated)
+{
+Response.Redirect("Login");
+}
+@{Layout = "Layout.cshtml";
+  var db = Database.Open("Northwind");
+  var query = db.Query("SELECT CompanyName, City, Country FROM Customers");  
+}
+    <h1>Customers</h1>
+        <table>
+        <tr>
+            <th>Name</th>
+            <th>City</th>
+            <th>Country</th>
+        </tr>
+        @foreach(var row in query)
+        {  
+            <tr>
+            <td>@row.CompanyName</td>
+            <td>@row.City</td>
+            <td>@row.Country</td>
+            </tr>
+        }
+        </table>    
